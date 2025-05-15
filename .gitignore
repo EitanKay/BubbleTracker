@@ -1,4 +1,5 @@
 input_files/
 .venv/
 
-video_out/*
+video_out/*.mp4
+plot_out/*.png
