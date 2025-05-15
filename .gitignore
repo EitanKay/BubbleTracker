@@ -1,4 +1,4 @@
 input_files/
 .venv/
 
-video_out/
+video_out/*
