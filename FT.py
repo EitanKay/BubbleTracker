@@ -48,6 +48,11 @@ def plot_spectrum(xf, yf, title, plt):
     plt.set_xlim(1, 1000)
     # plt.show()
 
+def get_freq_from_wav_file(filename, start_time, end_time):
+    samplerate, data = read_and_trim_wav(filename)
+    active_data = data[int(start_time * samplerate):int(end_time * samplerate)]
+    xf, yf = compute_fft(active_data, samplerate)
+    return xf, yf
 
 
 # plot_spectrum_from_wav_file("./input_files/5mm.wav", 2, 10, "Bubble 1")
