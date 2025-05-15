@@ -25,18 +25,18 @@ def compute_fft(data, samplerate):
 
 
 
-def plot_spectrum_from_wav_file(filename, start_time, end_time, bubble_name):
+def plot_spectrum_from_wav_file(filename, start_time, end_time, bubble_name, plt):
     
     samplerate, data = read_and_trim_wav(filename)
 
     active_data = data[int(start_time * samplerate):int(end_time * samplerate)]
     
     xf, yf = compute_fft(active_data, samplerate)
-    plot_spectrum(xf, yf, f"Spectrum from {start_time} to {end_time} seconds for {bubble_name}")
+    plot_spectrum(xf, yf, f"Spectrum from {start_time} to {end_time} seconds for {bubble_name}", plt)
 
 
-def plot_spectrum(xf, yf, title):
-    # plt.figure(figsize=(12, 6))
+def plot_spectrum(xf, yf, title, plt):
+    plt.figure(figsize=(12, 6))
     plt.plot(xf, yf)
     plt.title(title)
     plt.xscale('log')
@@ -50,5 +50,5 @@ def plot_spectrum(xf, yf, title):
 
 
 
-plot_spectrum_from_wav_file("./input_files/5mm.wav", 2, 10, "Bubble 1")
+# plot_spectrum_from_wav_file("./input_files/5mm.wav", 2, 10, "Bubble 1")
 
