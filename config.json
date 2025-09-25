@@ -1,0 +1,33 @@
+{
+  "file_paths": {
+    "input_video": "input_files/first-test-sync - Trim.mov",
+    "test_output_video": "temp/test.mp4",
+    "output_audio": "temp/audio.wav",
+    "csv_output": "bubble_tracks.csv",
+    "tracker_output": "temp/bubble_tracker.pkl"
+  },
+  "video_processing": {
+    "actual_fps": 240,
+    "speed_factor": 8,
+    "num_videos_in_test_output": 4
+  },
+  "frame_cropping": {
+    "crop_y": [130, 1500],
+    "crop_x": [50, 450]
+  },
+  "image_processing": {
+    "contrast": 1,
+    "brightness": 0,
+    "masking_threshold": 2
+  },
+  "morphological_operations": {
+    "kernel_size": [10, 5],
+    "morph_open_iterations": 3,
+    "morph_close_iterations": 1
+  },
+  "bubble_detection": {
+    "min_bubble_area": 1300,
+    "max_tracking_distance": 100,
+    "background_recalc_interval": 300
+  }
+}

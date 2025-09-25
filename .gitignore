@@ -1,5 +1,11 @@
 input_files/
 .venv/
-
+temp/*.mp4
 video_out/*.mp4
 plot_out/*.png
+temp/bubble_tracker.pkl
+temp/test.mp4
+temp/output.mp4
+temp/audio.wav
+__pycache__/config_loader.cpython-312.pyc
+__pycache__/BubbleTracker.cpython-312.pyc
