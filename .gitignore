@@ -9,3 +9,6 @@ temp/output.mp4
 temp/audio.wav
 __pycache__/config_loader.cpython-312.pyc
 __pycache__/BubbleTracker.cpython-312.pyc
+bubble_tracks.csv
+temp/output.mp4
+temp/test.mp4
