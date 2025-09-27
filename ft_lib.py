@@ -53,7 +53,3 @@ def get_freq_from_wav_file(filename, start_time, end_time):
     active_data = data[int(start_time * samplerate):int(end_time * samplerate)]
     xf, yf = compute_fft(active_data, samplerate)
     return xf, yf
-
-
-# plot_spectrum_from_wav_file("./input_files/5mm.wav", 2, 10, "Bubble 1")
-

@@ -1,17 +1,11 @@
 import cv2
 import numpy as np
-import math
-from collections import defaultdict
 import csv
-import matplotlib.pyplot as plt
-import ft_lib
-from moviepy.editor import AudioFileClip
 from moviepy.editor import vfx
 import sys
 from moviepy.editor import VideoFileClip
 import os
 import shutil
-import pickle
 from BubbleTracker import BubbleTracker
 from config_loader import config
 
@@ -120,6 +114,16 @@ def create_average_background(cap, num_frames, crop_x, crop_y) -> np.ndarray:
     # Initialize accumulator with first frame
     cap.set(cv2.CAP_PROP_POS_FRAMES, start_frame)
     ret, frame = cap.read()
+    
+    # make sure num_frames does not exceed the total number of frames remaining
+    total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+    remaining_frames = total_frames - start_frame
+    
+    if num_frames > remaining_frames:
+        num_frames = remaining_frames
+    
+    if remaining_frames <= 1:
+        return frame[crop_y[0]:crop_y[1], crop_x[0]:crop_x[1]]
     
     if not ret:
         raise ValueError("Cannot read frames from video")
@@ -290,7 +294,6 @@ def process_frames(cap: cv2.VideoCapture, tracker: BubbleTracker, test_out: cv2.
         bubble_in_frame = False
         print(f"time: {frame_num/fps:.2f}s / {cap.get(cv2.CAP_PROP_FRAME_COUNT)/fps:.2f}s")
         # clear the console output
-        sys.stdout.write("\033[F")  # Cursor up one line
         ret, frame = cap.read()
         if not ret:
             break  # End of video
@@ -298,6 +301,8 @@ def process_frames(cap: cv2.VideoCapture, tracker: BubbleTracker, test_out: cv2.
         # recalculate the average background
         if frame_num % background_interval == 0:
             avg_background = create_average_background(cap, num_frames=background_interval, crop_x=crop_x, crop_y=crop_y)
+        
+        sys.stdout.write("\033[F")  # Cursor up one line
             
         # increment frame number
         frame_num += 1

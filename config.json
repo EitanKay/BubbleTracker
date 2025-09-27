@@ -1,6 +1,6 @@
 {
   "file_paths": {
-    "input_video": "input_files/first-test-sync - Trim.mov",
+    "input_video": "input_files/Test-2-sync.mp4",
     "test_output_video": "temp/test.mp4",
     "output_audio": "temp/audio.wav",
     "csv_output": "bubble_tracks.csv",
@@ -12,8 +12,8 @@
     "num_videos_in_test_output": 4
   },
   "frame_cropping": {
-    "crop_y": [130, 1500],
-    "crop_x": [50, 450]
+    "crop_y": [200, 1800],
+    "crop_x": [0, 450]
   },
   "image_processing": {
     "contrast": 1,
